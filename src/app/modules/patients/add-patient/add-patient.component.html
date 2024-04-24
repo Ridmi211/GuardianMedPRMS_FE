@@ -1,0 +1,75 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Register Patients</a>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+<div class="container">
+  <form [formGroup]="addForm" (ngSubmit)="onAddPatient()">
+    <h1>Register Patient</h1>
+
+    <div class="form-group">
+      <label for="patientNIC">Enter Patient NIC</label>
+      <input type="text" class="form-control" id="patientNIC" placeholder="Patient NIC" formControlName="patientNIC"
+        matTooltip="Patient NIC should not be a previously registered NIC ">
+      <div *ngIf="isFieldInvalid('patientNIC')" class="alert alert-danger">Patient NIC is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="patientName">Enter Patient Name</label>
+      <input type="text" class="form-control" id="patientName" placeholder="Patient Name" formControlName="patientName"
+        matTooltip="Enter Patient Name">
+      <div *ngIf="isFieldInvalid('patientName')" class="alert alert-danger">Patient Name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Select Gender</label>
+      <select class="form-control" id="gender" formControlName="gender" matTooltip="Select Gender">
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      <div *ngIf="isFieldInvalid('gender')" class="alert alert-danger">Gender is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="text" class="form-control" id="age" placeholder="Enter Age" formControlName="age"
+        matTooltip="Enter Age">
+      <div *ngIf="isFieldInvalid('age')" class="alert alert-danger">Age is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Home Address</label>
+      <input type="text" class="form-control" id="address" placeholder="Enter Home Address" formControlName="address"
+        matTooltip="Enter Home Address">
+      <div *ngIf="isFieldInvalid('address')" class="alert alert-danger">Home Address is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email"
+        matTooltip="Enter Email Address">
+      <div *ngIf="isFieldInvalid('email')" class="alert alert-danger">Email Address is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="contactNumber">Contact Number</label>
+      <input type="text" class="form-control" id="contactNumber" placeholder="Enter Contact Number"
+        formControlName="contactNumber" matTooltip="Enter Contact Number">
+      <div *ngIf="isFieldInvalid('contactNumber')" class="alert alert-danger">Contact Number is required.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

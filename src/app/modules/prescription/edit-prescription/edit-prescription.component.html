@@ -1,0 +1,73 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Update Prescription</a>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+<div class="container">
+  <form [formGroup]="prescriptionForm" (ngSubmit)="onSubmit()">
+    <h1>Update Prescription</h1>
+
+
+
+    <div class="form-group">
+      <label for="id">Prescription ID</label>
+      <input type="text" class="form-control" id="id" formControlName="id">
+    </div>
+
+    <div class="form-group">
+      <label for="patientNIC">Patient NIC</label>
+      <input type="text" class="form-control" id="patientNIC" formControlName="patientNIC">
+    </div>
+
+    <div class="form-group">
+      <label for="patientName">Patient Name</label>
+      <input type="text" class="form-control" id="patientName" formControlName="patientName">
+    </div>
+
+    <div class="form-group">
+      <label for="doctorID">Doctor ID</label>
+      <input type="text" class="form-control" id="doctorID" formControlName="doctorID">
+    </div>
+
+    <div class="form-group">
+      <label for="doctorName">Doctor Name</label>
+      <input type="text" class="form-control" id="doctorName" formControlName="doctorName">
+    </div>
+
+    <div class="form-group">
+      <label for="diagnosis">Diagnosis</label>
+      <input type="text" class="form-control" id="diagnosis" formControlName="diagnosis">
+      <div *ngIf="isFieldInvalid('diagnosis')" class="alert alert-danger">Diagnosis is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="medications">Medications</label>
+      <input type="text" class="form-control" id="medications" formControlName="medications">
+      <div *ngIf="isFieldInvalid('medications')" class="alert alert-danger">Medications required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="instructions">Instructions</label>
+      <input type="text" class="form-control" id="instructions" formControlName="instructions">
+      <div *ngIf="isFieldInvalid('instructions')" class="alert alert-danger">Instructions are required.</div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Update</button>
+      <button type="button" class="btn btn-primary" (click)="onBackClick()">Back</button>
+    </div>
+  </form>
+</div>

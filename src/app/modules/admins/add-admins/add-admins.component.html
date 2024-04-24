@@ -1,0 +1,54 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Register Admins</a>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+
+<div class="container">
+  <form #addForm="ngForm" (ngSubmit)="onAddAdmin(addForm)">
+    <h1>Add New Admin</h1>
+
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" placeholder="Username" ngModel name="username" required   [matTooltip]="'Username cannot be a previously used one'">
+      <div *ngIf="isFieldInvalid(addForm, 'username')" class="alert alert-danger">Username is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="Email" ngModel name="email" required  [matTooltip]="'Email address cannot be a previously used one'">
+      <div *ngIf="isFieldInvalid(addForm, 'email')" class="alert alert-danger">Email is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" ngModel name="password" required  [matTooltip]="'Password should be atleast 6 charachters long'">
+      <div *ngIf="isFieldInvalid(addForm, 'password')" class="alert alert-danger">Password is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Select role</label>
+      <select class="form-control" id="exampleFormControlSelect1" ngModel name="roles" required  [matTooltip]="'Select role'">
+        <option value="admin">admin</option>
+        <option value="superadmin">superadmin</option>
+      </select>
+      <div *ngIf="isFieldInvalid(addForm, 'roles')" class="alert alert-danger">Role is required.</div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,72 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" >Update Patients</a>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header --> 
+<div class="container">
+  <form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <h1>Update Patient</h1>
+   
+
+    <div class="form-group">
+      <label for="patientNIC">Enter Patient NIC</label>
+      <input type="text" class="form-control" id="patientNIC" formControlName="patientNIC" readonly [matTooltip]="'Patient NIC cannot be changed'">
+    </div>
+
+    <div class="form-group">
+      <label for="patientName">Enter Patient Name</label>
+      <input type="text" class="form-control" id="patientName" formControlName="patientName">
+      <div *ngIf="isFieldInvalid('patientName')" class="alert alert-danger">Patient Name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Select Gender</label>
+      <select class="form-control" id="gender" formControlName="gender">
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+      <div *ngIf="isFieldInvalid('gender')" class="alert alert-danger">Gender is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="text" class="form-control" id="age" formControlName="age">
+      <div *ngIf="isFieldInvalid('age')" class="alert alert-danger">Age is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Home Address</label>
+      <input type="text" class="form-control" id="address" formControlName="address">
+      <div *ngIf="isFieldInvalid('address')" class="alert alert-danger">Home Address is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" id="email" formControlName="email"  [matTooltip]="'Enter a valid email address'">
+      <div *ngIf="isFieldInvalid('email')" class="alert alert-danger">Email Address is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="contactNumber">Contact Number</label>
+      <input type="text" class="form-control" id="contactNumber" formControlName="contactNumber"  [matTooltip]="'Contact number should not exceed 10 integers'">
+      <div *ngIf="isFieldInvalid('contactNumber')" class="alert alert-danger">Contact Number is required.</div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success">Update</button>
+      <button type="button" class="btn btn-primary" (click)="onBackClick()">Back</button>
+    </div>
+  </form>
+</div>

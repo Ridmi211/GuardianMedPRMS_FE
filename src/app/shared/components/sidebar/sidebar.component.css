@@ -1,0 +1,188 @@
+
+p{ 
+  font-size: large;
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+  color: #fff;
+  width: 250px;
+  padding-left: 20px;
+  height: 100vh;
+  background-image: linear-gradient(30deg, #0048bd, #44a7fd);
+  border-top-right-radius: 80px;
+  z-index: 9999;
+  /* font-size: 20px; */
+}
+
+
+aside a {
+  font-size: 12px;
+  color: #fff;
+  display: block;
+  padding: 20px;
+  padding-left: 20px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  position: relative; /* Added */
+  font-size: 15px;
+  
+}
+
+aside a:hover {
+  color: #3f5efb;
+  background: #fff;
+  outline: none;
+  position: relative;
+  background-color: #fff;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+aside a i {
+  margin-right: 5px;
+}
+
+aside a:hover::after,
+aside a .sub-menu:hover ~ .sub-menu::after { /* Added */
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  bottom: 100%;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0 20px 0 0 #fff;
+}
+
+aside a:hover::before,
+aside a .sub-menu:hover ~ .sub-menu::before { /* Added */
+  content: "";
+  position: absolute;
+  background-color: transparent;
+  top: 38px;
+  right: 0;
+  height: 35px;
+  width: 35px;
+  border-top-right-radius: 18px;
+  box-shadow: 0 -20px 0 0 #fff;
+}
+
+aside p {
+  margin: 0;
+  padding: 40px 0;
+}
+
+body {
+  font-family: 'Roboto';
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+
+.sub-menu { /* Added */
+  display: none;
+  padding-left: 40px;
+}
+
+aside a:hover .sub-menu { /* Added */
+  display: block;
+}
+
+.social {
+  height: 0;
+}
+
+.social i:before {
+  width: 14px;
+  height: 14px;
+  font-size: 14px;
+  position: fixed;
+  color: #fff;
+  background: #0077B5;
+  padding: 10px;
+  border-radius: 50%;
+  top: 5px;
+  right: 5px;
+}
+
+
+aside .sub-menu {
+  display: none;
+  padding-left: 40px;
+  max-height: 0; 
+  overflow: hidden; 
+  transition: max-height 0.3s ease; 
+}
+
+aside a:hover .sub-menu {
+  display: block;
+  max-height: 200px; 
+}
+
+aside .sub-menu a {
+    color: #000; 
+}
+
+aside .sub-menu a:hover {
+    color: #3f5efb;
+    background-color: #b9cdd1;
+}
+
+aside .sub-menu a i {
+    margin-right: 5px;
+}
+
+aside .sub-menu a:hover::after,
+aside .sub-menu a .sub-menu:hover ~ .sub-menu::after {
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    bottom: 100%;
+    right: 0;
+    height: 35px;
+    width: 35px;
+    border-bottom-right-radius: 18px;
+    box-shadow: 0 20px 0 0  #b9cdd1;
+}
+
+aside .sub-menu a:hover::before,
+aside .sub-menu a .sub-menu:hover ~ .sub-menu::before {
+    content: "";
+    position: absolute;
+    background-color: transparent;
+    top: 38px;
+    right: 0;
+    height: 35px;
+    width: 35px;
+    border-top-right-radius: 18px;
+    box-shadow: 0 -20px 0 0  #b9cdd1;
+}
+
+.logo {
+  padding: 20px 0;
+}
+
+.logo a {
+  display: flex;
+  /* align-items: center; */
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo img {
+  height: 30px;
+  margin-right: 10px;
+  pointer-events: none;
+  margin-left: -15px;
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 5px;
+  pointer-events: none;
+}

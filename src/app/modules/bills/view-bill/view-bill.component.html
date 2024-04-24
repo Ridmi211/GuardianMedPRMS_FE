@@ -1,0 +1,62 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Bill Details</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+<div class="container">
+
+
+  <h1>Bill Details</h1>
+
+
+
+  <div class="card">
+    <img class="card-img-top"
+      src="https://st2.depositphotos.com/4320929/11268/v/450/depositphotos_112683454-stock-illustration-hands-holding-bills-and-pencil.jpg"
+      alt="Card image cap">
+    <div class="card-body">
+      <h2 class="card-title">Bill Details</h2>
+      <p class="card-text">Bill ID : {{bill.id}} ({{bill.customerBillId}}) </p>
+      <ul class="list-group">
+        <p class="card-text">Date : {{bill.date}}</p>
+
+        <p class="card-text">Admin : {{bill.adminId}}</p>
+
+        <p class="card-text">Patient NIC : {{bill.patientNIC}}</p>
+
+        <p class="card-text">Patient Name : {{bill.patientName}}</p>
+
+        <p class="card-text"> Prescribed Medication</p>
+        <li class="list-group-item">{{bill.doctorsMedication}}</li>
+        <p class="card-text">Issued Medication</p>
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let medication of bill.medications">
+            <span>Name: {{medication.name}}</span><br>
+            <span>Quantity: {{medication.quantity}}</span><br>
+            <span>Price per 1 : Rs.{{medication.price}}.00</span><br>
+          </li>
+        </ul>
+
+        <p class="card-text"><b>Total Payable : Rs. {{bill.totalAmount}}.00 </b></p>
+
+
+      </ul>
+
+      <a class="btn btn-primary" (click)="onBackClick()">Back</a>
+    </div>
+  </div>
+
+
+</div>

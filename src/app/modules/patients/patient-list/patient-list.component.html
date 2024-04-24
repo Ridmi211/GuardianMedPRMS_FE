@@ -1,0 +1,78 @@
+
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Registered Patients</a>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+
+<div class="container">
+
+<div class="row">
+  <div class="col-2"></div>
+  <div class="col-10">
+    <h1>Registered Patients  </h1>
+
+
+     <!-- Search abr  -->
+     <nav class="navbar navbar-light bg-light">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="requestedNIC" name="searchInp">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search(requestedNIC)">Search By NIC</button>
+      </form>
+    </nav>
+<!-- table -->
+    <div class="col-sm">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Row count </th>
+            <th scope="col">Patient NIC</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">View</th>
+            <th *ngIf="isSuperAdmin"  scope="col">Edit</th>
+            <th *ngIf="isSuperAdmin"  scope="col" [matTooltip]=" 'Patients with issued prescriptions cannot be deleted'">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let patients of patient; let i = index">
+            <td scope="row">{{ i + 1 }}
+            </td>
+            <td class="text-center">
+              {{ patients.patientNIC }}
+            </td>
+            <td class="text-center">
+              {{ patients.patientName }}
+            </td>
+            <td class="text-center">
+              {{ patients.email }}
+            </td>
+              
+            <td class="btn-column"><button type="button" class="btn btn-primary" (click)="detailsPage(patients.patientNIC)" >View</button></td>
+            <td class="btn-column"><button *ngIf="isSuperAdmin"  type="button" class="btn btn-success" (click)="updatePatient(patients.patientNIC)">Edit</button></td>
+            <td class="btn-column"><button *ngIf="isSuperAdmin" type="button" class="btn btn-danger"
+              [disabled]="hasPrescriptions[patients.patientNIC]"
+              (click)="onDeletePatient(patients.patientNIC)">Delete</button>
+            </td>
+          </tr>
+        
+        </tbody>
+      </table>
+    </div>
+ </div>
+ 
+</div>
+</div>

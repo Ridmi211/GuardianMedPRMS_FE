@@ -1,0 +1,67 @@
+
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Registered Admins</a>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+<div class="container">
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-10">
+      <h1>Registered Admins (Pharmacists)  </h1>
+       <!-- Search bar  -->
+       <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="requestedID" name="searchInp">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit"(click)="search(requestedID)">Search By Username</button>
+        </form>
+      </nav>
+<!-- table -->
+      <div class="col-sm">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Row count </th>
+              <th scope="col">Username</th>
+              <th scope="col">Email</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Reset password</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of user; let i = index">
+              <td scope="row">{{ i + 1 }}
+              </td>
+              <td class="text-center">
+                {{ user.username }}
+              </td>
+              <td class="text-center">
+                {{ user.email }}
+              </td>
+                           
+
+              <td class="btn-column"><button type="button" class="btn btn-success"(click)="updateAdmin(user.id)">Edit</button></td>
+              <td class="btn-column"><button type="button" class="btn btn-primary"(click)="resetPassword(user.id)">Reset </button></td>
+              <td class="btn-column"><button type="button" class="btn btn-danger"  (click)="onDeleteAdmin(user.username)">Delete</button></td>
+            </tr>
+             </tbody>
+        </table>
+      </div>
+   </div>
+   
+  </div>
+  </div>

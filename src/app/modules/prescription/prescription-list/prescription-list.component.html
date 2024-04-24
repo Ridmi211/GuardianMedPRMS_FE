@@ -1,0 +1,85 @@
+
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Issued Prescriptions</a>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-10">
+
+
+      <h1>Issued Prescriptions</h1>
+      <!-- Search abr  -->
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="requestedId" name="searchInp">
+          <button class="btn btn-outline-success my-2 my-sm-0" (click)="search(requestedId)">Search By NIC</button>
+        </form>
+      </nav>
+<!-- table -->
+      <div class="col-sm">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Row count</th>
+               <th scope="col">Patient NIC</th>
+              <th scope="col">Patient Name</th>
+              <th scope="col">Status</th>
+              <th scope="col">View</th>
+              <th *ngIf="isSuperAdmin" scope="col" [matTooltip]=" 'Inactive prescriptions cannot be edited'">Edit</th>
+              <th *ngIf="isSuperAdmin" scope="col" [matTooltip]=" 'Prescription can only be deleted after 5 years from the date of creation.'">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prescriptions of prescription; let i = index">
+              <td scope="row">{{ i + 1 }}</td>
+              <td class="text-center">{{ prescriptions.patientNIC  }}</td>
+              <td class="text-center">{{ prescriptions.patientName }}</td>
+              <td class="text-center">{{ prescriptions.state }}</td>
+              <td class="btn-column">
+                <button type="button" class="btn btn-primary" (click)="detailsPage(prescriptions.id)" >View</button>
+              </td>
+              <td class="btn-column">
+                <button
+                *ngIf="isSuperAdmin"
+                [disabled]="prescriptions.state === 'INACTIVE'"
+                 type="button"
+                class="btn btn-success"
+                (click)="updatePrescription(prescriptions)"
+                
+              >
+                Edit
+              </button>
+              
+              </td>
+              <td class="btn-column">
+                <button
+                  *ngIf="isSuperAdmin"
+                  [disabled]="!isDeleteButtonEnabled(prescriptions)"
+                  type="button"
+                  class="btn btn-danger"
+                  (click)="onDeletePrescription(prescriptions.id)"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

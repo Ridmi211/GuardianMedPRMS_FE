@@ -1,0 +1,75 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Issued Bills</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-10">
+      <h1>Issued bills </h1>
+
+
+      <!-- Search abr  -->
+      <nav class="navbar navbar-light bg-light">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+            [(ngModel)]="requestedID" name="searchInp">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="search(requestedID)">Search By
+            ID</button>
+        </form>
+      </nav>
+      <!-- table -->
+      <div class="col-sm">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Row count </th>
+              <th scope="col">Bill ID</th>
+              <th scope="col">Patient NIC</th>
+              <th scope="col">Date Issued</th>
+              <th scope="col">View</th>
+              <th scope="col">Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bill of bill; let i = index">
+              <td scope="row">{{ i + 1 }}
+              </td>
+              <td class="text-center">
+                {{ bill.customerBillId }}
+              </td>
+              <td class="text-center">
+                {{ bill.patientNIC }}
+              </td>
+              <td class="text-center">
+                {{ bill.date }}
+              </td>
+              <td class="btn-column"><button type="button" class="btn btn-primary"
+                  (click)="detailsPage(bill.id)">View</button></td>
+              <td class="btn-column"><button type="button" class="btn btn-danger"
+                  (click)="onDeleteBill(bill.id)">Delete</button></td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>

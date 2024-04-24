@@ -1,0 +1,53 @@
+<aside>
+  <div class="logo">
+    <a routerLink="/" routerLinkActive="active">
+      <img src="https://tse3.mm.bing.net/th/id/OIG3.I2qOJ1hbqdecsI7MN2SF?pid=ImgGn" alt="Logo"><br>
+      <span class="brand-name">GuardianMed</span>
+    </a>
+  </div>
+  <p>Menu</p>
+  <a *ngIf="isSuperAdmin" routerLink="/super-admin-dashboard" routerLinkActive="active">
+    <i class="fa fa-laptop" aria-hidden="true"></i> Doctor Dashboard
+  </a>
+  <a *ngIf="isAdmin" routerLink="/admin-dashboard" routerLinkActive="active">
+    <i class="fa fa-laptop" aria-hidden="true"></i> Pharmacist Dashboard
+  </a>
+  <a href="javascript:void(0)">
+    <i class="fa fa-laptop" aria-hidden="true"></i> Patients
+    <span class="sub-menu">
+      <a *ngIf="isSuperAdmin" routerLink="/patients/add" routerLinkActive="active">Add Patients</a>
+      <a routerLink="/patients/list" routerLinkActive="active">All Patients</a>
+    </span>
+  </a>
+  <a *ngIf="isSuperAdmin" href="javascript:void(0)">
+    <i class="fa fa-laptop" aria-hidden="true"></i> Admins
+    <span class="sub-menu">
+      <a routerLink="/admins/add" routerLinkActive="active">Add Admins</a>
+      <a routerLink="/admins/all" routerLinkActive="active">All Admins</a>
+    </span>
+  </a>
+
+  <a href="javascript:void(0)">
+    <i class="fa fa-laptop" aria-hidden="true"></i> Prescriptions
+    <span class="sub-menu">
+      <a *ngIf="isSuperAdmin" routerLink="/prescriptions/add" routerLinkActive="active">Add Prescriptions</a>
+      <a routerLink="/prescriptions/list" routerLinkActive="active">All Prescriptions</a>
+    </span>
+  </a>
+  <a *ngIf="isAdmin" routerLink="/bills/list" routerLinkActive="active">
+    <i class="fa fa-laptop" aria-hidden="true"></i> Issued Bills
+  </a>
+  <a href="/admins/profile">
+    <i class="fa fa-laptop" aria-hidden="true"></i> My Profile
+  </a>
+  <a routerLink="/login" routerLinkActive="active" (click)="logout()">
+    <i class="fa fa-user-o" aria-hidden="true"></i> logout
+  </a>
+
+</aside>
+
+<div class="social">
+  <a href="https://www.linkedin.com/in/florin-cornea-b5118057/" target="_blank">
+    <i class="fa fa-linkedin"></i>
+  </a>
+</div>

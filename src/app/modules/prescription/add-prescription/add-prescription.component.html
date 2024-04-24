@@ -1,0 +1,72 @@
+<!-- AddPrescriptionComponent HTML template -->
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Add Prescription</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+<div class="container">
+  <form [formGroup]="addForm" (ngSubmit)="onAddPrescription()">
+    <h1>Add New Prescription</h1>
+
+    <div class="form-group">
+      <label for="patientNIC">Patient NIC</label>
+      <input type="text" class="form-control" id="patientNIC" placeholder="Patient NIC" formControlName="patientNIC"
+        matTooltip="Patient NIC should be a registered NIC ">
+      <div *ngIf="isFieldInvalid('patientNIC')" class="alert alert-danger">Patient NIC is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="doctorID">Doctor ID</label>
+      <input class="form-control" id="doctorID" type="text" placeholder="Doctor ID" formControlName="doctorID"
+        matTooltip="Enter Doctor ID">
+      <div *ngIf="isFieldInvalid('doctorID')" class="alert alert-danger">Doctor ID is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="doctorName">Doctor Name</label>
+      <input type="text" class="form-control" id="doctorName" placeholder="Doctor Name" formControlName="doctorName"
+        matTooltip="Enter Doctor Name">
+      <div *ngIf="isFieldInvalid('doctorName')" class="alert alert-danger">Doctor Name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="patientName">Patient Name</label>
+      <input type="text" class="form-control" id="patientName" placeholder="Patient Name" formControlName="patientName"
+        matTooltip="Enter Patient Name">
+      <div *ngIf="isFieldInvalid('patientName')" class="alert alert-danger">Patient Name is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="diagnosis">Diagnosis</label>
+      <textarea class="form-control" id="diagnosis" rows="3" formControlName="diagnosis"
+        matTooltip="Enter Diagnosis"></textarea>
+      <div *ngIf="isFieldInvalid('diagnosis')" class="alert alert-danger">Diagnosis is required.</div>
+    </div>
+
+    <div class="form-group">
+      <label for="medications">Medications:</label>
+      <textarea class="form-control" id="medications" rows="3" formControlName="medications" class="form-control"
+        matTooltip="Enter medications separated by commas"></textarea>
+      <div *ngIf="isFieldInvalid('medications')" class="alert alert-danger">Medications is required.</div>
+    </div>
+    <div class="form-group">
+      <label for="instructions">Instructions</label>
+      <textarea class="form-control" id="instructions" rows="3" formControlName="instructions"
+        matTooltip="Enter Instructions"></textarea>
+      <div *ngIf="isFieldInvalid('instructions')" class="alert alert-danger">Instructions is required.</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,57 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand">Pharmacist- Dashboard</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-10">
+      <h1><b>PHARMACIST - DASHBOARD</b></h1>
+      <img class="img-top" src="https://assets.contenthub.wolterskluwer.com/api/public/content/2d6270134d914df784f05b8e6fdcb848?v=dc0e0f0a">
+      <h1>Active Prescriptions</h1>
+
+      <!-- table -->
+      <div class="col-sm">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Row count</th>
+              <th scope="col">Prescription ID</th>
+              <th scope="col">Patient NIC</th>
+              <th scope="col">Patient Name</th>
+              <th scope="col">Status</th>
+              <!-- <th scope="col">View</th> -->
+              <th scope="col">Issue Bill</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let prescription of prescriptions; let i = index">
+              <td scope="row">{{ i + 1 }}</td>
+              <td class="text-center">{{ prescription.id }}</td>
+              <td class="text-center">{{ prescription.patientNIC }}</td>
+              <td class="text-center">{{ prescription.patientName }}</td>
+              <td class="text-center">{{ prescription.state }}</td>
+              
+              <td class="btn-column">
+                <button type="button" class="btn btn-success" (click)="detailsPage(prescription)">Issue</button>
+
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

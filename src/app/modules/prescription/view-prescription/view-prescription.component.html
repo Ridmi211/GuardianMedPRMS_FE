@@ -1,0 +1,58 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Prescription Details</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+<div class="container">
+
+
+  <h1>Prescription Details</h1>
+
+
+
+  <div class="card">
+    <img class="card-img-top"
+      src="https://www.benecaid.com/wp-content/uploads/2018/01/3-Cost-of-prescription-drugs-a-breakdown.jpg"
+      alt="Card image cap">
+    <div class="card-body">
+      <h2 class="card-title">Patient Name : {{prescription.patientName}}</h2>
+      <ul class="list-group">
+        <p class="card-text">Patient NIC</p>
+        <li class="list-group-item">{{prescription.patientNIC}} </li>
+        <p class="card-text">Date</p>
+        <li class="list-group-item">{{prescription.date}}</li>
+
+        <p class="card-text">Prescription ID </p>
+        <li class="list-group-item">{{prescription.id}} </li>
+        <p class="card-text">Doctor ID</p>
+        <li class="list-group-item">{{prescription.doctorID}}</li>
+        <p class="card-text">Doctor Name</p>
+        <li class="list-group-item">{{prescription.doctorName}}</li>
+        <p class="card-text">Diagnosis</p>
+        <li class="list-group-item">{{prescription.diagnosis}}</li>
+        <p class="card-text">Medications</p>
+        <li class="list-group-item">{{prescription.medications}}</li>
+        <p class="card-text">Instructions</p>
+        <li class="list-group-item">{{prescription.instructions}}</li>
+        <p class="card-text">State</p>
+        <li class="list-group-item">{{prescription.state}}</li>
+
+      </ul>
+      <a class="btn btn-primary" (click)="onBackClick()">Back</a>
+
+    </div>
+  </div>
+
+</div>

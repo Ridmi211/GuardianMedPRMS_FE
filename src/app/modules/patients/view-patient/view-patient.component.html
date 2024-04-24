@@ -1,0 +1,109 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Patient Details</a>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+
+<div class="container">
+
+
+    <h1>Patient Details</h1>
+   
+
+
+    <div class="card" >
+    <img class="card-img-top" src="https://assets.contenthub.wolterskluwer.com/api/public/content/20fc8b2fb1a445f78a9be1ca7fda9a35" alt="Card image cap">
+    <div class="card-body">
+      <h2 class="card-title">{{patient.patientName}}</h2>
+      
+      <ul class="list-group">
+        <p class="card-text">Patient NIC : {{patient.patientNIC}} </p>
+        <li class="list-group-item"></li>
+        <p class="card-text">Gender :{{patient.gender}}</p>
+        <li class="list-group-item"></li>
+        <p class="card-text">Age : {{patient.age}} years</p>
+        <li class="list-group-item"></li>
+        <p class="card-text">Address : {{patient.address}}</p>
+        <li class="list-group-item"></li>
+        <p class="card-text">Email : {{patient.email}}</p>
+        <li class="list-group-item"></li>
+        <p class="card-text">Conatct Number : {{patient.contactNumber}}</p>
+        <li class="list-group-item"></li>
+    
+       
+      </ul>
+      <a  class="btn btn-primary" (click)="onBackClick()" >Back</a>
+      <a  *ngIf="isSuperAdmin" class="btn btn-success" (click)="updatePatient(patient.patientNIC)" >Edit</a>
+     
+    </div>
+  </div>
+
+
+  <h1>Issued Prescriptions</h1>
+  <div class="col-sm">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Row count</th>
+          <th scope="col">Prescription ID</th>
+          <th scope="col">Patient NIC</th>
+          <th scope="col">Patient Name</th>
+          <th scope="col">Status</th>
+          <th scope="col">View</th>
+          <th *ngIf="isSuperAdmin" scope="col">Edit</th>
+          <th *ngIf="isSuperAdmin" scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prescriptions of prescription; let i = index">
+          <td scope="row">{{ i + 1 }}</td>
+          <td class="text-center">{{ prescriptions.id }}</td>
+          <td class="text-center">{{ prescriptions.patientNIC  }}</td>
+          <td class="text-center">{{ prescriptions.patientName }}</td>
+          <td class="text-center">{{ prescriptions.state }}</td>
+          <td class="btn-column">
+            <button type="button" class="btn btn-primary" (click)="detailsPage(prescriptions.id)" >View</button>
+          </td>
+          <td class="btn-column">
+            <button
+            *ngIf="isSuperAdmin"
+            [disabled]="prescriptions.state === 'INACTIVE'"
+             type="button"
+            class="btn btn-success"
+            (click)="updatePrescription(prescriptions)"
+            
+          >
+            Edit
+          </button>
+          
+          </td>
+          <td class="btn-column">
+            <button
+            *ngIf="isSuperAdmin"
+            [disabled]="!isDeleteButtonEnabled(prescriptions)"
+            type="button"
+            class="btn btn-danger"
+            (click)="onDeletePrescription(prescriptions.id)"
+          >
+            Delete
+          </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  

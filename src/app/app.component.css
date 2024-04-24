@@ -1,0 +1,14 @@
+.app-container {
+    display: flex;
+    height: 100vh; 
+  }
+  
+  .app-sidebar {
+    width: 25%; 
+    background-color: #f0f0f0; 
+  }
+  
+  /* .main-content {
+    flex-grow: 1; 
+  } */
+  

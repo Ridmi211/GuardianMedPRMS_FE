@@ -1,0 +1,109 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<!-- page header -->
+
+<div class="col-12">
+  <nav class="pageHeader">
+    <div class="container">
+      <a class="navbar-brand" href="#">Issue Bill</a>
+     
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      </div>
+    </div>
+  </nav>
+</div>
+<!-- end of page header -->
+<div class="container">
+  <form [formGroup]="medicationForm">
+    <h1>Issue Bill</h1>
+   
+    <!-- form -->
+
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Prescription details</h2>
+            <ul class="list-group">     
+              <p class="card-text">Patient NIC</p>
+              <li class="list-group-item">{{ prescription.patientNIC }}</li> 
+              <p class="card-text">Patient Name</p>
+              <li class="list-group-item">{{ prescription.patientName }}</li> 
+              <p class="card-text">Issued date</p>
+              <li class="list-group-item">{{ prescription.date }}</li>         
+              <p class="card-text">Prescription ID</p>
+              <li class="list-group-item">{{ prescription.id }}</li>
+              <p class="card-text">Medications</p>
+              <li class="list-group-item">{{ prescription.medications.join(', ') }}</li>
+              <p class="card-text">Instructions</p>
+              <li class="list-group-item">{{ prescription.instructions }}</li>
+            </ul> 
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h2>Add medications</h2>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" id="name" formControlName="name" placeholder="Medication name" required>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" class="form-control" id="quantity" formControlName="quantity" placeholder="Issued quantity" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="price" formControlName="price" placeholder="Price per one" required>
+        </div>
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="addMedication()">Add medication</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Row count</th>
+              <th scope="col">Medicine</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Price</th>
+              <th scope="col">Total Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let medication of medications; let i = index">
+              <td scope="row">{{ i + 1 }}</td>
+              <td class="text-center">{{ medication.name }}</td>
+              <td class="text-center">{{ medication.quantity }}</td>
+              <td class="text-center">{{ medication.price }}</td>
+              <td class="text-center">{{ medication.totalPrice }}</td>
+            </tr>
+            <tr>
+              <td scope="row"><b>Total Payable</b></td>
+              <td class="text-center"></td>
+              <td class="text-center"></td>
+              <td class="text-center"></td>
+              <td class="text-center">Rs.{{ getTotalPayable() }}.00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="row">
+          <div class="col"></div>
+          <div class="col">
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" (click)="onAddBill(medicationObj)">Issue Bill</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
