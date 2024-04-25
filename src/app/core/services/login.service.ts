@@ -15,8 +15,14 @@ export class LoginService {
     private userAuthService: UserAuthService) { }
 
 
-  public onLogin(loginData: any) {
+  public requestOTP(loginData: any) {
     return this.httpclient.post(this.API_PATH + '/api/auth/signin', loginData, {
+      headers: this.requestHeader,
+    });
+  }
+
+  public verifyOTP(otpData: any) {
+    return this.httpclient.post(this.API_PATH + '/api/auth/verify-otp', otpData, {
       headers: this.requestHeader,
     });
   }
