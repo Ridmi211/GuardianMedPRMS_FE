@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/core/services/login.service';
 import { UserAuthService } from 'src/app/core/services/user-auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -12,29 +13,20 @@ import { UserAuthService } from 'src/app/core/services/user-auth.service';
 export class LoginComponent implements OnInit {
   otpMode: boolean = false;
   username: string = '';
+  errorMessage: string = '';
 
   constructor(
     private loginService: LoginService,
     private userAuthService: UserAuthService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {}
+  
 
-  // onLogin(loginForm: NgForm) {
-  //   this.loginService.requestOTP(loginForm.value).subscribe(
-  //     (response: any) => {
-  //       console.log('OTP request response:', response);
-  //       // Switch to OTP mode
-  //       this.otpMode = true;
-  //       this.username = loginForm.value.username; // Store the username for OTP verification
-  //     },
-  //     (error) => {
-  //       console.log('Error requesting OTP:', error);
-  //     }
-  //   );
-  // }
   onLogin(loginForm: NgForm) {
+    
     this.loginService.requestOTP(loginForm.value).subscribe(
       (response: any) => {
         console.log('OTP request response:', response);
@@ -49,6 +41,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log('Error requesting OTP:', error);
+        this.toastr.error("Invalid login credentials", 'Error');
       }
     );
   }
@@ -63,6 +56,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.verifyOTP(otpData).subscribe(
       (response: any) => {
+        if (response.success) {
         console.log('OTP verification response:', response);
         // Handle successful OTP verification (e.g., store token, navigate to dashboard)
         console.log('login response-----:', response);
@@ -80,9 +74,17 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(['/login']);
         }
+      }
+      else {
+          console.log('Error verifying OTP:', response.message);
+          // Set the error message to be displayed to the user
+          this.errorMessage = response.message;
+          this.toastr.error(response.message, 'Error');
+        }
       },
       (error) => {
         console.log('Error verifying OTP:', error);
+         this.toastr.error('An error occurred during OTP verification. Please try again.', 'Error');
         // Handle OTP verification error
       }
     );
