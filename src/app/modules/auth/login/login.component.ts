@@ -52,6 +52,10 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
+  goBackLogin() {    
+          this.otpMode = false;      
+  }
   
   onVerifyOTP(otpForm: NgForm) {
     const otp = otpForm.value.otp;

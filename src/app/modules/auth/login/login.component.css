@@ -124,6 +124,24 @@ label span {
 .btn1:hover {
   background: #5d33e6;
 }
+.btnBack {
+  border:0;
+  background: #5a5f62;
+  color: #dfdeee;
+  border-radius: 10px;
+  width: 150px;
+  height: 25px;
+  font-size: 12px;
+  /* position: absolute;
+  top: 79%;
+  left: 8%; */
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btnBack:hover {
+  background: #2e3031;
+}
 
 .rmb {
   position: absolute;
@@ -200,5 +218,9 @@ label span {
   color: #7f5feb;;
 }
 
+.disabled-btn {
+  opacity: 0.5; 
+  cursor: not-allowed; 
+ }
 
 
