@@ -11,10 +11,15 @@
       </form>
     </div>
     <div *ngIf="otpMode">
-      <form #otpForm="ngForm" (ngSubmit)="onVerifyOTP(otpForm)">
-        <input type="text" name="otp" ngModel required placeholder="Enter OTP">
-        <button type="submit">Verify OTP</button>
-      </form>
+      <div class="container">
+        <span class="error animated tada" id="msg"></span>
+        <form class="box" #otpForm="ngForm" (ngSubmit)="onVerifyOTP(otpForm)">
+          <h4><span>Please enter the OTP code sent to your email address to continue Sign in to your account.</span>
+          </h4>
+          <input type="text" name="otp" ngModel required placeholder="Enter OTP">
+          <button type="submit" class="btn1">Verify OTP</button>
+        </form>
+      </div>
     </div>
     <div class="footer"></div>
   </div>
