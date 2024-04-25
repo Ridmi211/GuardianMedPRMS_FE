@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
 
     this.loginService.verifyOTP(otpData).subscribe(
       (response: any) => {
-        if (response.success) {
+        // if (response.success) {
         console.log('OTP verification response:', response);
         // Handle successful OTP verification (e.g., store token, navigate to dashboard)
         console.log('login response-----:', response);
@@ -74,13 +74,13 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(['/login']);
         }
-      }
-      else {
-          console.log('Error verifying OTP:', response.message);
-          // Set the error message to be displayed to the user
-          this.errorMessage = response.message;
-          this.toastr.error(response.message, 'Error');
-        }
+      // }
+      // else {
+      //     console.log('Error verifying OTP:', response.message);
+      //     // Set the error message to be displayed to the user
+      //     this.errorMessage = response.message;
+      //     this.toastr.error(response.message, 'Error');
+      //   }
       },
       (error) => {
         console.log('Error verifying OTP:', error);
