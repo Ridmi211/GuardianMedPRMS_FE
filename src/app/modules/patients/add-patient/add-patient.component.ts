@@ -49,7 +49,7 @@ export class AddPatientComponent implements OnInit {
         window.location.reload();
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert('Patient with the same NIC exists');
       }
     );
   }

@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { User } from 'src/app/models/user';
 
@@ -12,6 +13,7 @@ import { User } from 'src/app/models/user';
 export class AddAdminsComponent implements OnInit {
   constructor(
     private adminService: AdminService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {}
@@ -36,9 +38,10 @@ export class AddAdminsComponent implements OnInit {
         this.adminService.getAdmins();
         addForm.reset();
         window.location.reload();
+        alert("User added successfully");
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert("Username or password already taken");
       }
     );
   }

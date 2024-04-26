@@ -47,28 +47,18 @@ export class AddBillsComponent implements OnInit {
         price: this.medicationForm.value.price,
         totalPrice: this.medicationForm.value.quantity * this.medicationForm.value.price
       };
-
       const medicine = {
         name: this.medicationForm.value.name,
         quantity: this.medicationForm.value.quantity,
         price: this.medicationForm.value.price,
-      };
+      };       
 
-     
-     
-
-      this.medications.push(medication);
-      
+      this.medications.push(medication);      
       this.medicine.push(medicine);
       this.medicationObj= {
         medications:this.medicine
-     }
-
-
-   
-
-      this.medicationForm.reset();
-     
+     } 
+      this.medicationForm.reset();     
     } else {
       alert('Please fill in all the required fields.');
     }
@@ -91,7 +81,7 @@ export class AddBillsComponent implements OnInit {
         alert("Bill added email sent Successfully");
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert("Failed to add the bill");
       }
     );
   }

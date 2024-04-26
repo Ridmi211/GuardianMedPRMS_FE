@@ -33,11 +33,10 @@ export class EditPatientsComponent implements OnInit {
 
     this.patientService.getPatientByNIC(this.patientNIC).subscribe(
       (response: any) => {
-        this.patientForm.patchValue(response); // Fill the form with response data
+        this.patientForm.patchValue(response);
       },
       (error: any) => {
         console.error(error);
-        // Handle error, e.g., show error message or redirect to an error page
       }
     );
   }
@@ -48,12 +47,10 @@ export class EditPatientsComponent implements OnInit {
         (response) => {
           console.log(response);
           alert('Updated');
-          // Redirect to the prescription details page
           this.router.navigate(['patients/details', this.patientNIC]);
         },
         (error) => {
           console.error(error);
-          // Handle error, e.g., show error message or redirect to an error page
         }
       );
     } else {

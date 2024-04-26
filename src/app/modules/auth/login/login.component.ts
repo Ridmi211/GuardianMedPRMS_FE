@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
           this.otpMode = true;
           this.username = loginForm.value.username;
           this.password = loginForm.value.password;
+          this.toastr.success('OTP sent Successfully');
         } else {
           console.log(response.message);
         }
@@ -68,10 +69,11 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(['/login']);
         }
+        alert('Sign in successfull');
       },
       (error) => {
         console.log('Error verifying OTP:', error);
-        this.toastr.error('An error occurred during OTP verification. Please try again.', 'Error');
+        this.toastr.error('OTP verification failed. Please try again.', 'Error');
       }
     );
   }

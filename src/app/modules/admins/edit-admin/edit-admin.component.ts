@@ -34,7 +34,7 @@ export class EditAdminComponent implements OnInit {
         this.adminForm.patchValue(response); 
       },
       (error: any) => {
-      
+        alert("User not found")
       }
     );
   }
@@ -44,11 +44,11 @@ export class EditAdminComponent implements OnInit {
       this.adminService.updateAdmin(this.id, this.adminForm.value)
         .subscribe(
           (response) => {
-            alert('Updated');
-            
+            alert('User Updated');
+            window.location.reload();
                },
           (error) => {
-         
+            alert("Failed to update user")
           }
         );
     }
