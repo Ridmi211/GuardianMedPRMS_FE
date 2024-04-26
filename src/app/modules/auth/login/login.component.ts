@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   otpMode: boolean = false;
   username: string = '';
   errorMessage: string = '';
+  password:string='';
 
   constructor(
     private loginService: LoginService,
@@ -34,6 +35,7 @@ export class LoginComponent implements OnInit {
           // OTP sent successfully, switch to OTP mode
           this.otpMode = true;
           this.username = loginForm.value.username;
+          this.password = loginForm.value.password;
         } else {
           // Handle case where OTP sending failed
           console.log(response.message); // Optional: Log additional message from the server
@@ -52,7 +54,7 @@ export class LoginComponent implements OnInit {
   
   onVerifyOTP(otpForm: NgForm) {
     const otp = otpForm.value.otp;
-    const otpData = { username: this.username, otp };
+    const otpData = { username: this.username, otp , password:this.password};
 
     this.loginService.verifyOTP(otpData).subscribe(
       (response: any) => {
