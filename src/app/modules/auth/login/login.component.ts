@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isButtonClicked: boolean = false;
   otpMode: boolean = false;
   username: string = '';
   errorMessage: string = '';
@@ -21,24 +22,31 @@ export class LoginComponent implements OnInit {
     private userAuthService: UserAuthService,
     private router: Router,
     private toastr: ToastrService
+    
   ) { }
 
   ngOnInit(): void { }
 
   onLogin(loginForm: NgForm) {
+    this.isButtonClicked = true;   
     this.loginService.requestOTP(loginForm.value).subscribe(
-      (response: any) => {
+            (response: any) => {
         console.log('OTP request response:', response);
+        
         if (response.otpSent) {
           this.otpMode = true;
           this.username = loginForm.value.username;
           this.password = loginForm.value.password;
           this.toastr.success('OTP sent Successfully');
+          
         } else {
+          this.isButtonClicked = false;
           console.log(response.message);
+          this.toastr.error("Invalid login credentials", 'Error');
         }
       },
       (error) => {
+        this.isButtonClicked = false;
         console.log('Error requesting OTP:', error);
         this.toastr.error("Invalid login credentials", 'Error');
       }
@@ -46,8 +54,10 @@ export class LoginComponent implements OnInit {
   }
 
   goBackLogin() {
+    this.isButtonClicked = false;
     this.otpMode = false;
   }
+
 
   onVerifyOTP(otpForm: NgForm) {
     const otp = otpForm.value.otp;
