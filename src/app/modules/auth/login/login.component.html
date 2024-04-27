@@ -19,8 +19,7 @@
       <div class="container">
         <span class="error animated tada" id="msg"></span>
         <form class="box" #otpForm="ngForm" (ngSubmit)="onVerifyOTP(otpForm)">
-          <h4><span>Please enter the OTP code sent to your email address to continue Sign in to your account.</span>
-          </h4>
+          <div class="otp-msg">Please enter the OTP code sent to your email address to continue Sign in to your account. </div>
           <input type="text" name="otp" ngModel required placeholder="Please Enter your OTP">
           <button type="submit" class="btn1" [disabled]="otpForm.invalid"[ngClass]="{'disabled-btn': otpForm.invalid}">Sign In</button>
                   </form>
