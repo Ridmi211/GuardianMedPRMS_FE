@@ -3,3 +3,50 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+/* Custom Toastr styles */
+.toast-success {
+    background-color: #51a351 !important;
+    top: 20px;
+    left: 0px;
+    height: fit-content;
+    min-height: 50px;
+    width: 350px;
+    padding: 10px;
+    border-radius: 5px;
+    color: beige;
+    position: relative;
+  }
+  .toast-error {
+    background-color: #e50e03 !important;
+    top: 20px;
+    left: 0px;
+    height: fit-content;
+    width: 350px;
+    padding: 10px;
+    border-radius: 5px;
+    color: beige;
+    position: relative;
+  }
+  .toast-info {
+    background-color: #2f96b4 !important;
+    top: 20px;
+    left: 0px;
+    height: fit-content;
+    width: 350px;
+    padding: 10px;
+    border-radius: 5px;
+    color: beige;
+    position: relative;
+  }
+  .toast-warning {
+    background-color: #f89406 !important;
+    top: 20px;
+    left: 0px;
+    height: fit-content;
+    width: 350px;
+    padding: 10px;
+    border-radius: 5px;
+    color: beige;
+    position: relative;
+  }
+  

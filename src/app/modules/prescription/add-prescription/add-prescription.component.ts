@@ -82,7 +82,7 @@ export class AddPrescriptionComponent implements OnInit {
         if (error.status === 400 && error.error.message === 'Patient not found') {
           this.errorMessage = 'Patient not found for the given patient NIC. Please register the patient first.';
         } else {
-          alert('Failed to add prescription. ' + error.message);
+          alert("Patient not found for the given patient NIC. Please register the patient first.");
         }
       }
     );
