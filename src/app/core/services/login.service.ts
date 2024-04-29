@@ -27,23 +27,24 @@ export class LoginService {
     });
   }
 
-  public roleMatch(allowedRoles): boolean {
-    let isMatch = false;
-    const userRoles: any = this.userAuthService.getRoles();
-
-    if (userRoles != null && userRoles) {
-      for (let i = 1; i < userRoles.length; i++) {
-        for (let j = 1; j < allowedRoles.length; j++) {
-          if (userRoles[i].roles === allowedRoles[j]) {
-            return isMatch;
-          } else {
-            return isMatch;
-          }
+  public roleMatch(allowedRoles: string[]): boolean {
+    console.log("Checking role match...");
+    const userRoles: string[] = this.userAuthService.getRoles();
+    console.log("userRoles:", userRoles);
+    
+    if (userRoles && userRoles.length > 0) {
+      for (let i = 0; i < userRoles.length; i++) {
+        if (allowedRoles.includes(userRoles[i])) {
+          console.log("Match found: ", userRoles[i]);
+          return true; // Found a match, return true
         }
       }
     }
-    return isMatch;
+    
+    console.log("No match found.");
+    return false; // No match found, return false
   }
+  
 
 
 

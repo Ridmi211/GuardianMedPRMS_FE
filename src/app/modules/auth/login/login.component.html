@@ -1,29 +1,30 @@
 <body id="particles-js">
   <div class="animated bounceInDown">
-      <div *ngIf="!otpMode" class="container">
+    <div *ngIf="!otpMode" class="container">
       <span class="error animated tada" id="msg"></span>
       <form name="loginForm" class="box" #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
         <h4>Welcome to <span>GuardianMed</span></h4>
         <h5>Sign in to your account.</h5>
         <input type="text" name="username" placeholder="Username" autocomplete="off" ngModel required>
         <input type="password" name="password" placeholder="Password" autocomplete="off" ngModel required>
-        <button type="submit" class="btn1" [disabled]="isButtonClicked || loginForm.invalid" [ngClass]="{'disabled-btn': isButtonClicked || loginForm.invalid}">
+        <button type="submit" class="btn1" [disabled]="isButtonClicked || loginForm.invalid"
+          [ngClass]="{'disabled-btn': isButtonClicked || loginForm.invalid}">
           <span *ngIf="!isButtonClicked">Get OTP</span>
           <span *ngIf="isButtonClicked"> Please wait OTP requested</span>
         </button>
-        
-        <!-- <button type="submit" class="btn1" [disabled]="isButtonClicked || loginForm.invalid" [ngClass]="{'disabled-btn': isButtonClicked || loginForm.invalid}">Get OTP</button> -->
       </form>
     </div>
     <div *ngIf="otpMode">
       <div class="container">
         <span class="error animated tada" id="msg"></span>
         <form class="box" #otpForm="ngForm" (ngSubmit)="onVerifyOTP(otpForm)">
-          <div class="otp-msg">Please enter the OTP code sent to your email address to continue Sign in to your account. </div>
+          <div class="otp-msg">Please enter the OTP code sent to your email address to continue Sign in to your account.
+          </div>
           <input type="text" name="otp" ngModel required placeholder="Please Enter your OTP">
-          <button type="submit" class="btn1" [disabled]="otpForm.invalid"[ngClass]="{'disabled-btn': otpForm.invalid}">Sign In</button>
-                  </form>
-                  <button class="btnBack" (click)="goBackLogin()">Go back</button>
+          <button type="submit" class="btn1" [disabled]="otpForm.invalid"
+            [ngClass]="{'disabled-btn': otpForm.invalid}">Sign In</button>
+        </form>
+        <button class="btnBack" (click)="goBackLogin()">Go back</button>
       </div>
     </div>
     <div class="footer"></div>
