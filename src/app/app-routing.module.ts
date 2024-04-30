@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'patients/list', component: PatientListComponent , canActivate: [AuthGuard]},
   {path:'patients/add',component:AddPatientComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_SUPER_ADMIN']}},
-  {path:'patients/details/:patientNIC',component:ViewPatientComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_SUPER_ADMIN']}},
+  {path:'patients/details/:patientNIC',component:ViewPatientComponent , canActivate: [AuthGuard]},
   {path:'patients/edit/:patientNIC', component:EditPatientsComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_SUPER_ADMIN']}},
   { path: 'prescriptions/edit/:id', component: EditPrescriptionComponent , canActivate: [AuthGuard], data: { roles: ['ROLE_SUPER_ADMIN']}},
   {path:'prescriptions/details/:id',component:ViewPrescriptionComponent , canActivate: [AuthGuard]},
