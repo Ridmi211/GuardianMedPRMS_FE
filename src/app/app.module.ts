@@ -37,6 +37,7 @@ import { AdminProfileComponent } from './modules/admins/admin-profile/admin-prof
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ResetPasswordComponent } from './modules/admins/reset-password/reset-password.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -79,10 +80,17 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot()
     
   ],
-  providers: [{
-    provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor,
-    multi:true
-  }],
+  providers: [    
+    {       
+     provide: LocationStrategy,       
+     useClass: HashLocationStrategy 
+    },
+    {
+    provide:HTTP_INTERCEPTORS, 
+    useClass:AuthInterceptor,
+      multi:true
+    },
+ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 
