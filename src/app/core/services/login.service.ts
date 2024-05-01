@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import{HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserAuthService } from './user-auth.service';
 
@@ -10,7 +10,7 @@ export class LoginService {
   API_PATH = 'http://localhost:8080';
 
   requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
-  constructor(  
+  constructor(
     private httpclient: HttpClient,
     private userAuthService: UserAuthService) { }
 
@@ -31,20 +31,18 @@ export class LoginService {
     console.log("Checking role match...");
     const userRoles: string[] = this.userAuthService.getRoles();
     console.log("userRoles:", userRoles);
-    
     if (userRoles && userRoles.length > 0) {
       for (let i = 0; i < userRoles.length; i++) {
         if (allowedRoles.includes(userRoles[i])) {
           console.log("Match found: ", userRoles[i]);
-          return true; // Found a match, return true
+          return true;
         }
       }
     }
-    
     console.log("No match found.");
-    return false; // No match found, return false
+    return false;
   }
-  
+
 
 
 

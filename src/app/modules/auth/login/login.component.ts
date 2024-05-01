@@ -58,7 +58,6 @@ export class LoginComponent implements OnInit {
     this.otpMode = false;
   }
 
-
   onVerifyOTP(otpForm: NgForm) {
     const otp = otpForm.value.otp;
     const otpData = { username: this.username, otp, password: this.password };
@@ -79,7 +78,7 @@ export class LoginComponent implements OnInit {
         } else {
           this.router.navigate(['/login']);
         }
-        alert('Sign in successfull');
+        alert('Sign in successful');
       },
       (error) => {
         console.log('Error verifying OTP:', error);

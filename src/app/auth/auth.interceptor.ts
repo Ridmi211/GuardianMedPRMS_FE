@@ -13,21 +13,16 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-
-  constructor(private userAuthService: UserAuthService, private router: Router) {}
-
+  constructor(private userAuthService: UserAuthService, private router: Router) { }
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = this.userAuthService.getToken();
-
     if (token) {
-      
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`
         }
       });
     }
-
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
         console.log(err.status);

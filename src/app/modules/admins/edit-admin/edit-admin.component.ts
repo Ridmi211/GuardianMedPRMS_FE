@@ -18,20 +18,18 @@ export class EditAdminComponent implements OnInit {
     private adminService: AdminService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.adminForm = this.formBuilder.group({
-     
       username: ['', Validators.required],
       email: ['', Validators.required]
-      
     });
 
     this.adminService.getAdminById(this.id).subscribe(
       (response: any) => {
-        this.adminForm.patchValue(response); 
+        this.adminForm.patchValue(response);
       },
       (error: any) => {
         alert("User not found")
@@ -46,7 +44,7 @@ export class EditAdminComponent implements OnInit {
           (response) => {
             alert('User Updated');
             window.location.reload();
-               },
+          },
           (error) => {
             alert("Failed to update user")
           }
@@ -57,8 +55,6 @@ export class EditAdminComponent implements OnInit {
   onBackClick() {
     this.router.navigate(['admins/all']);
   }
-
-  
 
   public isFieldInvalid(fieldName: string): boolean {
     const formControl = this.adminForm.controls[fieldName];
