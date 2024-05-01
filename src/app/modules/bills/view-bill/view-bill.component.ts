@@ -22,34 +22,27 @@ export class ViewBillComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     if (this.userId?.uId) {
       this.billService.getBillById(this.userId.uId).subscribe(
         (bill: Object) => {
           this.bill = bill as Bill;
-
         },
         (error) => {
-
+          alert('Bill not found');
         }
       );
-
-
     }
     const id = this.route.snapshot.params['id'];
-
   }
 
   onBackClick() {
     this.router.navigate(['bills/list']);
   }
 
-
   public onDeleteBill(userId: string): void {
     if (confirm('Are you sure want to delete Bill?')) {
       this.billService.deleteBill(userId).subscribe(
         (response: void) => {
-
           this.billService.getBills();
           window.location.reload();
         },

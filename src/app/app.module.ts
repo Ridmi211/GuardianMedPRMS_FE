@@ -36,6 +36,7 @@ import { SuperAdminDashboardComponent } from './modules/dashboard/super-admin-da
 import { AdminProfileComponent } from './modules/admins/admin-profile/admin-profile.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ResetPasswordComponent } from './modules/admins/reset-password/reset-password.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { ResetPasswordComponent } from './modules/admins/reset-password/reset-pa
     BrowserAnimationsModule,
     MatTooltipModule, 
     ReactiveFormsModule,
+    ToastrModule.forRoot()
     
   ],
   providers: [{

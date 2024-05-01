@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.development';
 export class BillService {
   private API_PATH = environment.apiBaseUrl;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   public getBills(): Observable<Bill[]> {
     return this.http.get<Bill[]>(`${this.API_PATH}/bills/all`);
@@ -20,7 +20,7 @@ export class BillService {
     return this.http.post<Bill>(`${this.API_PATH}/bills/add/${prescriptionID}`, bill);
   }
 
-   getBillById(id: String) {
+  getBillById(id: String) {
     return this.http.get(`${this.API_PATH}/bills/byID/${id}`);
   }
 

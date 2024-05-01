@@ -10,10 +10,8 @@ import { environment } from 'src/environments/environment.development';
   providedIn: 'root'
 })
 export class AdminService {
-
   private API_PATH = environment.apiBaseUrl;
-
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   public addAdmin(user: User): Observable<User> {
     return this.http.post<User>(`${this.API_PATH}/api/auth/signup`, user);
@@ -23,7 +21,7 @@ export class AdminService {
     return this.http.get<User[]>(`${this.API_PATH}/api/admin/all`);
   }
 
-    getAdminById(id: String) {
+  getAdminById(id: String) {
     return this.http.get(`${this.API_PATH}/api/admin/${id}`);
   }
   getAdminByName(name: String) {
@@ -36,7 +34,6 @@ export class AdminService {
       user
     );
   }
-
 
   public resetPassword(id: string, passwordResetRequest: PasswordResetRequest): Observable<PasswordResetRequest> {
     return this.http.put<PasswordResetRequest>(

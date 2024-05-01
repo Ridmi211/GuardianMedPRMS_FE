@@ -9,7 +9,7 @@ import { Prescription } from 'src/app/models/prescription';
   styleUrls: ['./admin-dashboard.component.css']
 })
 export class AdminDashboardComponent implements OnInit {
-  public prescriptions: Prescription[]; // Updated variable name
+  public prescriptions: Prescription[]; 
 
   constructor(
     private router: Router,

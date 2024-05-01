@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
     private userAuthService: UserAuthService,
     private router: Router,
     private loginService: LoginService
-  ) {}
+  ) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -26,12 +26,11 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.userAuthService.getToken() !== null) {
       const roles = route.data['roles'] as string[];
-
-
+      console.log("roles:" + roles)
       if (roles && roles.length > 0) {
         const match = this.loginService.roleMatch(roles);
-
         if (match) {
+          console.log("match:true")
           return true;
         } else {
           return this.router.createUrlTree(['/forbidden']);

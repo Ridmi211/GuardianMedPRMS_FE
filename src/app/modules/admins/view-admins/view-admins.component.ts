@@ -13,13 +13,10 @@ export class ViewAdminsComponent implements OnInit {
   public user:User[];
   requestedID:string;
 
-
   constructor(
     private adminService: AdminService,
     private userAuthService:UserAuthService,
-    private router:Router
-
-    
+    private router:Router    
   ){ }
 
   ngOnInit(): void {
@@ -29,9 +26,7 @@ export class ViewAdminsComponent implements OnInit {
   public getAdmins(): void {
     this.adminService.getAdmins().subscribe(
       (response: User[]) => {
-        this.user = response;
-        
-
+        this.user = response;       
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -59,7 +54,6 @@ export class ViewAdminsComponent implements OnInit {
     );
   }
   
-
   public onDeleteAdmin(userId: string): void {
     if (confirm('Are you sure want to delete this Admin?')) {
       this.adminService.deleteAdminByUsername(userId).subscribe(
@@ -74,10 +68,5 @@ export class ViewAdminsComponent implements OnInit {
       );
     }
   }
-
-
-
  
-
-  
 }
